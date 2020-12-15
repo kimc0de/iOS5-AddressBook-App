@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		443C49F525893C8C00E89274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C49F425893C8C00E89274 /* AppDelegate.swift */; };
 		443C49F725893C8C00E89274 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C49F625893C8C00E89274 /* SceneDelegate.swift */; };
-		443C49F925893C8C00E89274 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C49F825893C8C00E89274 /* ViewController.swift */; };
-		443C49FC25893C8C00E89274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C49FA25893C8C00E89274 /* Main.storyboard */; };
 		443C49FE25893C8F00E89274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443C49FD25893C8F00E89274 /* Assets.xcassets */; };
 		443C4A0125893C9000E89274 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C49FF25893C8F00E89274 /* LaunchScreen.storyboard */; };
+		443C4A17258952B000E89274 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A16258952B000E89274 /* AddressBook.swift */; };
+		443C4A1A258952D700E89274 /* AddressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A19258952D700E89274 /* AddressCard.swift */; };
+		443C4A2A2589569200E89274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A292589569200E89274 /* Main.storyboard */; };
+		443C4A46258960A500E89274 /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A45258960A500E89274 /* ContactDetailVC.swift */; };
+		443C4A49258960BB00E89274 /* ContactNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A48258960BB00E89274 /* ContactNewVC.swift */; };
+		443C4A4D258960D400E89274 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A4C258960D400E89274 /* ContactListVC.swift */; };
+		443C4A50258965B700E89274 /* GeneralDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */; };
+		443C4A532589678700E89274 /* HobbiesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A522589678700E89274 /* HobbiesTVCell.swift */; };
+		443C4A562589679900E89274 /* FriendsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A552589679900E89274 /* FriendsTVCell.swift */; };
+		443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		443C49F125893C8C00E89274 /* iOS5-LeDang-Pham.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS5-LeDang-Pham.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		443C49F425893C8C00E89274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		443C49F625893C8C00E89274 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		443C49F825893C8C00E89274 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		443C49FB25893C8C00E89274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		443C49FD25893C8F00E89274 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443C4A0025893C8F00E89274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		443C4A0225893C9000E89274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		443C4A16258952B000E89274 /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
+		443C4A19258952D700E89274 /* AddressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCard.swift; sourceTree = "<group>"; };
+		443C4A292589569200E89274 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		443C4A45258960A500E89274 /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
+		443C4A48258960BB00E89274 /* ContactNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNewVC.swift; sourceTree = "<group>"; };
+		443C4A4C258960D400E89274 /* ContactListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
+		443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDetailTVCell.swift; sourceTree = "<group>"; };
+		443C4A522589678700E89274 /* HobbiesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesTVCell.swift; sourceTree = "<group>"; };
+		443C4A552589679900E89274 /* FriendsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTVCell.swift; sourceTree = "<group>"; };
+		443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFriendsTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,47 @@
 		443C49F325893C8C00E89274 /* iOS5-LeDang-Pham */ = {
 			isa = PBXGroup;
 			children = (
+				443C4A212589541C00E89274 /* Model */,
+				443C4A222589543400E89274 /* View */,
+				443C4A232589545100E89274 /* Controller */,
 				443C49F425893C8C00E89274 /* AppDelegate.swift */,
 				443C49F625893C8C00E89274 /* SceneDelegate.swift */,
-				443C49F825893C8C00E89274 /* ViewController.swift */,
-				443C49FA25893C8C00E89274 /* Main.storyboard */,
 				443C49FD25893C8F00E89274 /* Assets.xcassets */,
-				443C49FF25893C8F00E89274 /* LaunchScreen.storyboard */,
 				443C4A0225893C9000E89274 /* Info.plist */,
 			);
 			path = "iOS5-LeDang-Pham";
+			sourceTree = "<group>";
+		};
+		443C4A212589541C00E89274 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A16258952B000E89274 /* AddressBook.swift */,
+				443C4A19258952D700E89274 /* AddressCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		443C4A222589543400E89274 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				443C49FF25893C8F00E89274 /* LaunchScreen.storyboard */,
+				443C4A292589569200E89274 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		443C4A232589545100E89274 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				443C4A45258960A500E89274 /* ContactDetailVC.swift */,
+				443C4A48258960BB00E89274 /* ContactNewVC.swift */,
+				443C4A4C258960D400E89274 /* ContactListVC.swift */,
+				443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */,
+				443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */,
+				443C4A522589678700E89274 /* HobbiesTVCell.swift */,
+				443C4A552589679900E89274 /* FriendsTVCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +174,7 @@
 			files = (
 				443C4A0125893C9000E89274 /* LaunchScreen.storyboard in Resources */,
 				443C49FE25893C8F00E89274 /* Assets.xcassets in Resources */,
-				443C49FC25893C8C00E89274 /* Main.storyboard in Resources */,
+				443C4A2A2589569200E89274 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +185,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				443C49F925893C8C00E89274 /* ViewController.swift in Sources */,
+				443C4A17258952B000E89274 /* AddressBook.swift in Sources */,
+				443C4A1A258952D700E89274 /* AddressCard.swift in Sources */,
+				443C4A46258960A500E89274 /* ContactDetailVC.swift in Sources */,
+				443C4A4D258960D400E89274 /* ContactListVC.swift in Sources */,
 				443C49F525893C8C00E89274 /* AppDelegate.swift in Sources */,
+				443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */,
+				443C4A49258960BB00E89274 /* ContactNewVC.swift in Sources */,
 				443C49F725893C8C00E89274 /* SceneDelegate.swift in Sources */,
+				443C4A50258965B700E89274 /* GeneralDetailTVCell.swift in Sources */,
+				443C4A532589678700E89274 /* HobbiesTVCell.swift in Sources */,
+				443C4A562589679900E89274 /* FriendsTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		443C49FA25893C8C00E89274 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				443C49FB25893C8C00E89274 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		443C49FF25893C8F00E89274 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,6 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS5-LeDang-Pham/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,6 +355,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS5-LeDang-Pham/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
