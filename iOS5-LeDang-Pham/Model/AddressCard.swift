@@ -56,6 +56,14 @@ class AddressCard : Codable, Equatable {
         }
     }
     
+    func getFullAddress() -> String {
+        return "\(postCode) \(city), \(street)"
+    }
+    
+    func getFullName() -> String {
+        return "\(firstName) \(lastName)"
+    }
+    
     func addFirstName(firstName : String) {
         self.firstName = firstName
     }

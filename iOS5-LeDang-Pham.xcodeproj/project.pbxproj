@@ -16,12 +16,11 @@
 		443C4A2A2589569200E89274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443C4A292589569200E89274 /* Main.storyboard */; };
 		443C4A46258960A500E89274 /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A45258960A500E89274 /* ContactDetailVC.swift */; };
 		443C4A49258960BB00E89274 /* ContactNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A48258960BB00E89274 /* ContactNewVC.swift */; };
-		443C4A4D258960D400E89274 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A4C258960D400E89274 /* ContactListVC.swift */; };
 		443C4A50258965B700E89274 /* GeneralDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */; };
 		443C4A532589678700E89274 /* HobbiesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A522589678700E89274 /* HobbiesTVCell.swift */; };
 		443C4A562589679900E89274 /* FriendsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A552589679900E89274 /* FriendsTVCell.swift */; };
 		443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */; };
-		443C4A5D258A5DB200E89274 /* AddressBookGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5C258A5DB200E89274 /* AddressBookGenerator.swift */; };
+		847D8124258A71EE00217E61 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D8123258A71EE00217E61 /* ContactListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +35,11 @@
 		443C4A292589569200E89274 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		443C4A45258960A500E89274 /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		443C4A48258960BB00E89274 /* ContactNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNewVC.swift; sourceTree = "<group>"; };
-		443C4A4C258960D400E89274 /* ContactListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
 		443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDetailTVCell.swift; sourceTree = "<group>"; };
 		443C4A522589678700E89274 /* HobbiesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesTVCell.swift; sourceTree = "<group>"; };
 		443C4A552589679900E89274 /* FriendsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTVCell.swift; sourceTree = "<group>"; };
 		443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFriendsTVC.swift; sourceTree = "<group>"; };
-		443C4A5C258A5DB200E89274 /* AddressBookGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookGenerator.swift; sourceTree = "<group>"; };
+		847D8123258A71EE00217E61 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +107,11 @@
 			children = (
 				443C4A45258960A500E89274 /* ContactDetailVC.swift */,
 				443C4A48258960BB00E89274 /* ContactNewVC.swift */,
-				443C4A4C258960D400E89274 /* ContactListVC.swift */,
 				443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */,
 				443C4A4F258965B700E89274 /* GeneralDetailTVCell.swift */,
 				443C4A522589678700E89274 /* HobbiesTVCell.swift */,
 				443C4A552589679900E89274 /* FriendsTVCell.swift */,
+				847D8123258A71EE00217E61 /* ContactListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,9 +189,8 @@
 				443C4A17258952B000E89274 /* AddressBook.swift in Sources */,
 				443C4A1A258952D700E89274 /* AddressCard.swift in Sources */,
 				443C4A46258960A500E89274 /* ContactDetailVC.swift in Sources */,
-				443C4A4D258960D400E89274 /* ContactListVC.swift in Sources */,
 				443C49F525893C8C00E89274 /* AppDelegate.swift in Sources */,
-				443C4A5D258A5DB200E89274 /* AddressBookGenerator.swift in Sources */,
+				847D8124258A71EE00217E61 /* ContactListViewController.swift in Sources */,
 				443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */,
 				443C4A49258960BB00E89274 /* ContactNewVC.swift in Sources */,
 				443C49F725893C8C00E89274 /* SceneDelegate.swift in Sources */,

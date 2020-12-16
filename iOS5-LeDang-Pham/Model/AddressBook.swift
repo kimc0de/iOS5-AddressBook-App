@@ -57,6 +57,42 @@ class AddressBook : Codable {
             try? data.write(to: url) }
     }
     
+    //return String array containing first char of all last name in the address book
+    func getAlphabetListFromLastName() -> [String]{
+        var addressBookWithFirstCharFromLastName = [String]()
+        for card in addressCards {
+            addressBookWithFirstCharFromLastName.append(getUpperCasedFirstChar(str: card.lastName))
+        }
+        return addressBookWithFirstCharFromLastName
+    }
+    
+    func getUpperCasedFirstChar(str: String) -> String {
+        return String(str.prefix(0)).uppercased()
+    }
+    
+    //return list of address card containing last name start with the given char
+    func getAddressCardsFromChar(char : String) -> [AddressCard]{
+        var addressCardsWithThisChar = [AddressCard]()
+        for card in addressCards {
+            if getUpperCasedFirstChar(str: card.lastName) == char {
+                addressCardsWithThisChar.append(card)
+            }
+        }
+        return addressCardsWithThisChar
+    }
+    
+    //return a double dimention array containing address sorted by alphabet
+    func getAddressBookInStringArray() -> [[AddressCard]] {
+        var addressCardsArray = [[AddressCard]]()
+        let firstChar = getAlphabetListFromLastName()
+        for str in firstChar {
+            let addressCardsFromThisChar = getAddressCardsFromChar(char: str)
+            addressCardsArray.append(addressCardsFromThisChar)
+        }
+        
+        return addressCardsArray
+    }
+    
     class func addressBook(fromFile path: String) -> AddressBook? { //05-Foundation-Archivierung Folie 13
         let url = URL(fileURLWithPath: path)
         if let data = try? Data(contentsOf: url) {
