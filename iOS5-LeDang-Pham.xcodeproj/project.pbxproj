@@ -21,6 +21,7 @@
 		443C4A532589678700E89274 /* HobbiesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A522589678700E89274 /* HobbiesTVCell.swift */; };
 		443C4A562589679900E89274 /* FriendsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A552589679900E89274 /* FriendsTVCell.swift */; };
 		443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */; };
+		443C4A5D258A5DB200E89274 /* AddressBookGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5C258A5DB200E89274 /* AddressBookGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		443C4A522589678700E89274 /* HobbiesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbiesTVCell.swift; sourceTree = "<group>"; };
 		443C4A552589679900E89274 /* FriendsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTVCell.swift; sourceTree = "<group>"; };
 		443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFriendsTVC.swift; sourceTree = "<group>"; };
+		443C4A5C258A5DB200E89274 /* AddressBookGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				443C4A16258952B000E89274 /* AddressBook.swift */,
 				443C4A19258952D700E89274 /* AddressCard.swift */,
+				443C4A5C258A5DB200E89274 /* AddressBookGenerator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				443C4A46258960A500E89274 /* ContactDetailVC.swift in Sources */,
 				443C4A4D258960D400E89274 /* ContactListVC.swift in Sources */,
 				443C49F525893C8C00E89274 /* AppDelegate.swift in Sources */,
+				443C4A5D258A5DB200E89274 /* AddressBookGenerator.swift in Sources */,
 				443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */,
 				443C4A49258960BB00E89274 /* ContactNewVC.swift in Sources */,
 				443C49F725893C8C00E89274 /* SceneDelegate.swift in Sources */,

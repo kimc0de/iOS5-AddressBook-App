@@ -7,9 +7,11 @@
 
 import Foundation
 
-class AddressBook : Codable { 
+class AddressBook : Codable {
+    
     var addressCards = [AddressCard]()
     
+    init() {}
     func add (card : AddressCard) {
         addressCards.append(card)
         sortByName()
