@@ -48,13 +48,26 @@ class AddressBook : Codable {
         return nil
     }
     
-    func save (toFile path : String) { // 05-Foundation-Archivierung Folie 12
-        // file for saving data
-        let url = URL(fileURLWithPath: path)
-        // encode and save
+//    func save (toFile path : String) { // 05-Foundation-Archivierung Folie 12
+//        // file for saving data
+//        let url = URL(fileURLWithPath: path)
+//        // encode and save
+//        let encoder = PropertyListEncoder()
+//        if let data = try? encoder.encode(self) {
+//            try? data.write(to: url) }
+//
+//    }
+    
+    func save(toURL url: URL) {
         let encoder = PropertyListEncoder()
-        if let data = try? encoder.encode(self) {
-            try? data.write(to: url) }
+        do {
+            if let data = try? encoder.encode(self) {
+                try data.write(to: url)
+                print("Saved!")
+            }
+        } catch {
+            print(error)
+        }
     }
     
     //return String array containing first char of all last name in the address book
@@ -93,11 +106,20 @@ class AddressBook : Codable {
         return addressCardsArray
     }
     
-    class func addressBook(fromFile path: String) -> AddressBook? { //05-Foundation-Archivierung Folie 13
-        let url = URL(fileURLWithPath: path)
-        if let data = try? Data(contentsOf: url) {
+    class func addressBook(fromFile path: URL) -> AddressBook? { //05-Foundation-Archivierung Folie 13
+//        let url = URL(fileURLWithPath: path)
+//        if let data = try? Data(contentsOf: url) {
+//            let decoder = PropertyListDecoder()
+//            if let addressBook = try? decoder.decode(AddressBook.self, from: data) {
+//                return addressBook
+//            }
+//        }
+//        return nil
+//    }
+        //iOS5: path as URL
+        if let url = try? Data(contentsOf: path) {
             let decoder = PropertyListDecoder()
-            if let addressBook = try? decoder.decode(AddressBook.self, from: data) {
+            if let addressBook = try? decoder.decode(self, from: url) {
                 return addressBook
             }
         }

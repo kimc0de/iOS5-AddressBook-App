@@ -8,7 +8,12 @@
 import UIKit
 
 class GeneralDetailTVCell: UITableViewCell {
-
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBOutlet weak var infoText: UITextField!
+    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

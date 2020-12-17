@@ -1,60 +1,63 @@
 //
-//  ContactListViewController.swift
+//  ContactNewTVC.swift
 //  iOS5-LeDang-Pham
 //
-//  Created by Tùng Linh Phạm Bá on 16.12.20.
+//  Created by Kim on 17.12.20.
 //
 
 import UIKit
 
-class ContactListTVC: UITableViewController {
+class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
-    
-    var addressBook = AddressBook()
-    var sectionTitles = [String]()
-    var sectionRows = [[AddressCard]]()
+    var book: AddressBook? = nil
+    var card:AddressCard? = nil
+    var hobbies:[String]? = nil
+    var friends:[AddressCard]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateAddressCard()
+
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-    }
-    
-    func updateAddressCard(){
-        sectionTitles = addressBook.getAlphabetListFromLastName()
-        sectionRows = addressBook.getAddressBookInStringArray()
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
-
+    
+    // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionTitles.count
+        //section 0: general data
+        //section 1: hobbies
+        //section 2: friends
+        return 2
     }
-
+    
+    // MARK: - Number of rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sectionRows[section].count
+        switch section{
+        case 0 : return 5
+        case 1 : return hobbies?.count ?? 0
+        case 2 : return friends?.count ?? 0
+        default: return 1
+        }
     }
 
+    // MARK: - Cell per row
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Name", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewDetail", for: indexPath) as! GeneralDetailTVCell
+        
+        
         // Configure the cell...
-        cell.textLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullName()
-        cell.detailTextLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullAddress()
+
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
-    }
-    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -63,18 +66,17 @@ class ContactListTVC: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            sectionRows[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
