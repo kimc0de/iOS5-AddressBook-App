@@ -20,17 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let path = url?.appendingPathComponent("book.plist") {
             if let book = AddressBook.addressBook(fromFile: path) { 
-                myAddressBook = book
-                myAddressBook.sortByName()
+                self.myAddressBook = book
+                self.myAddressBook.sortByName()
             }else{
                 print("Generate new contacts!")
-                myAddressBook = generateContacts()
+                self.myAddressBook = generateContacts()
             }
         }
         return true
     }
     
-    //MARK: Generate contaces
+    //MARK: Generate contacts
     func generateContacts() -> AddressBook{
         let newAddressBook = AddressBook()
         let person1 = AddressCard(firstName: "Kim Ngan", lastName: "Le Dang", street: "Goethestrasse 38", postCode: 12345, city:"Berlin", hobbies: ["Cook", "Photography"], friends: [])

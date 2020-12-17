@@ -16,12 +16,17 @@ class ContactListTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateAddressCard()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        // Passing variable from AppDelegate
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            addressBook = delegate.myAddressBook
+        }
+        updateAddressCard()
     }
     
     func updateAddressCard(){
@@ -91,14 +96,24 @@ class ContactListTVC: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "newContact" {
+            if let controller = segue.destination as? ContactNewTVC {
+                controller.myAddressBook = self.addressBook
+            }
+        }
+        
+        if segue.identifier == "contactDetails" {
+            //
+        }
     }
-    */
+    
 
 }

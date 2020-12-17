@@ -9,7 +9,7 @@ import UIKit
 
 class FriendsTVCell: UITableViewCell {
 
-    @IBOutlet weak var friends: UITextField!
+    @IBOutlet weak var friendsText: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -20,7 +20,7 @@
 		443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */; };
 		443C4A65258ACE2C00E89274 /* ContactNewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A64258ACE2C00E89274 /* ContactNewTVC.swift */; };
 		443C4A69258ACE4900E89274 /* ContactDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C4A68258ACE4900E89274 /* ContactDetailTVC.swift */; };
-		847D8124258A71EE00217E61 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D8123258A71EE00217E61 /* ContactListViewController.swift */; };
+		847D8124258A71EE00217E61 /* ContactListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D8123258A71EE00217E61 /* ContactListTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFriendsTVC.swift; sourceTree = "<group>"; };
 		443C4A64258ACE2C00E89274 /* ContactNewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNewTVC.swift; sourceTree = "<group>"; };
 		443C4A68258ACE4900E89274 /* ContactDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTVC.swift; sourceTree = "<group>"; };
-		847D8123258A71EE00217E61 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		847D8123258A71EE00217E61 /* ContactListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,7 @@
 		443C4A232589545100E89274 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				847D8123258A71EE00217E61 /* ContactListViewController.swift */,
+				847D8123258A71EE00217E61 /* ContactListTVC.swift */,
 				443C4A68258ACE4900E89274 /* ContactDetailTVC.swift */,
 				443C4A64258ACE2C00E89274 /* ContactNewTVC.swift */,
 				443C4A5825896BCE00E89274 /* ContactFriendsTVC.swift */,
@@ -188,7 +188,7 @@
 				443C4A17258952B000E89274 /* AddressBook.swift in Sources */,
 				443C4A1A258952D700E89274 /* AddressCard.swift in Sources */,
 				443C49F525893C8C00E89274 /* AppDelegate.swift in Sources */,
-				847D8124258A71EE00217E61 /* ContactListViewController.swift in Sources */,
+				847D8124258A71EE00217E61 /* ContactListTVC.swift in Sources */,
 				443C4A5925896BCE00E89274 /* ContactFriendsTVC.swift in Sources */,
 				443C49F725893C8C00E89274 /* SceneDelegate.swift in Sources */,
 				443C4A50258965B700E89274 /* GeneralDetailTVCell.swift in Sources */,

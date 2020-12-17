@@ -9,11 +9,10 @@ import UIKit
 
 class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
-    var book: AddressBook? = nil
+    var myAddressBook: AddressBook? = nil
     var card:AddressCard? = nil
-    var hobbies:[String]? = nil
-    var friends:[AddressCard]? = nil
     
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,41 +22,87 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    // MARK: - View Will Disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        //formValiate()
+        if let newCard = self.card {
+            print("Adding new contact")
+            self.myAddressBook?.add(card: newCard)
+        }
+    }
+    
     // MARK: - Table view data source
     
     // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        //section 0: general data
-        //section 1: hobbies
-        //section 2: friends
-        return 2
+        return 1
+        //TODO: maybe add sections for hobbies, friends?
     }
     
     // MARK: - Number of rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        switch section{
-        case 0 : return 5
-        case 1 : return hobbies?.count ?? 0
-        case 2 : return friends?.count ?? 0
-        default: return 1
-        }
+//        switch section{
+//        case 0 : return 5
+//        case 1 : return hobbies?.count ?? 0
+//        case 2 : return friends?.count ?? 0
+//        default: return 1
+//        }
+        return 5
     }
 
     // MARK: - Cell per row
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewDetail", for: indexPath) as! GeneralDetailTVCell
         
+        // Only general details
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newDetail", for: indexPath) as! GeneralDetailTVCell
+        
+        cell.infoText.delegate = self
         
         // Configure the cell...
-
+        switch indexPath.row {
+        case 0:
+            cell.infoLabel.text = "Firstname"
+            cell.infoText.text = ""
+        case 1:
+            cell.infoLabel.text = "Lastname"
+            cell.infoText.text = ""
+        case 2:
+            cell.infoLabel.text = "Street"
+            cell.infoText.text = ""
+        case 3:
+            cell.infoLabel.text = "Post Code"
+            cell.infoText.text = ""
+        case 4:
+            cell.infoLabel.text = "City"
+            cell.infoText.text = ""
+        default: break
+        }
         return cell
+        
+        
+      //TODO: maybe add hobbies and friends here too..?
+        
     }
     
-
+    // MARK: - Header for sections
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0 {
+//            return ""
+//        } else if section == 1 {
+//            return "Hobbies"
+//        } else if section == 2 {
+//            return "Friends"
+//        } else {
+//            return ""
+//        }
+        
+        return ""
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -102,5 +147,10 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // Make keyboard hide after user hit enter after changing textfield
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

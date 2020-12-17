@@ -45,7 +45,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="prZ-cY-m5h" kind="show" id="XXX-Xq-1rU"/>
+                                    <segue destination="prZ-cY-m5h" kind="show" identifier="contactDetails" id="XXX-Xq-1rU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="Address Book" id="uGW-Cd-OVv">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="5rI-SY-XPd">
                             <connections>
-                                <segue destination="Dfy-Zb-I7Y" kind="show" id="n91-Tp-Jwu"/>
+                                <segue destination="Dfy-Zb-I7Y" kind="show" identifier="newContact" id="n91-Tp-Jwu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,14 +85,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NC0-it-prE">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="103" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1N-TH-UHe">
-                                            <rect key="frame" x="131" y="4" width="263" height="34"/>
+                                            <rect key="frame" x="143" y="4" width="251" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -102,44 +101,6 @@
                                 <connections>
                                     <outlet property="infoLabel" destination="NC0-it-prE" id="Jj6-Of-b72"/>
                                     <outlet property="infoText" destination="c1N-TH-UHe" id="5VW-xO-GdZ"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newHobbies" id="BBF-eT-H4w" customClass="HobbiesTVCell" customModule="iOS5_LeDang_Pham" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BBF-eT-H4w" id="WNC-BH-vhe" customClass="HobbiesTVCell" customModule="iOS5_LeDang_Pham" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hobbies" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-1n-Uwd">
-                                            <rect key="frame" x="20" y="4" width="374" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="hobbies" destination="A4b-1n-Uwd" id="eWD-Iw-cra"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newFriends" id="DTL-O3-zn2" customClass="FriendsTVCell" customModule="iOS5_LeDang_Pham" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="142.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DTL-O3-zn2" id="guN-ZD-5Zd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Friends" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Duu-X1-RgD">
-                                            <rect key="frame" x="20" y="4" width="374" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="friends" destination="Duu-X1-RgD" id="Yv2-Wd-ygf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -152,7 +113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHG-ch-o7O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2390" y="279"/>
+            <point key="canvasLocation" x="2389.8550724637685" y="278.57142857142856"/>
         </scene>
         <!--Detail-->
         <scene sceneID="BbR-ls-DJo">
@@ -209,7 +170,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="hobbies" destination="y3V-xx-j7a" id="M93-9a-C4X"/>
+                                    <outlet property="hobbiesText" destination="y3V-xx-j7a" id="M93-9a-C4X"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendsDetail" textLabel="nXj-ZL-jlz" detailTextLabel="Prm-yc-RDK" style="IBUITableViewCellStyleSubtitle" id="ar2-az-tNE" customClass="FriendsTVCell" customModule="iOS5_LeDang_Pham" customModuleProvider="target">
