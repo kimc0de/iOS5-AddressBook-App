@@ -30,6 +30,14 @@ class AddressCard : Codable, Equatable {
         self.friends = friends
         
     }
+    init(firstName:String, lastName:String, street:String, postCode:Int, city:String ){
+        self.firstName = firstName
+        self.lastName = lastName
+        self.street = street
+        self.postCode = postCode
+        self.city = city
+        
+    }
     func add(hobby: String) {
         hobbies.append(hobby)
     }

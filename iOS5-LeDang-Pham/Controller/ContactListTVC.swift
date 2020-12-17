@@ -23,13 +23,22 @@ class ContactListTVC: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         // Passing variable from AppDelegate
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            addressBook = delegate.myAddressBook
+        if let del = UIApplication.shared.delegate as? AppDelegate {
+            // access properties
+            addressBook = del.myAddressBook
         }
         updateAddressCard()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //sortieren
+        super.viewWillAppear(animated)
+        updateAddressCard()
+        tableView.reloadData()
+    }
+    
     func updateAddressCard(){
+        
         sectionTitles = addressBook.getAlphabetListFromLastName()
         sectionRows = addressBook.getAddressBookInStringArray()
     }
@@ -38,7 +47,7 @@ class ContactListTVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionTitles.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

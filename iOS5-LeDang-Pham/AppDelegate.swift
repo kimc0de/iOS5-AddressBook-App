@@ -12,13 +12,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var myAddressBook = AddressBook()
     let path:String = ""
+    var filename:String = "book.plist"
     
     // MARK: Program starts
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 
-        if let path = url?.appendingPathComponent("book.plist") {
+        if let path = url?.appendingPathComponent(filename) {
+            print(path)
             if let book = AddressBook.addressBook(fromFile: path) { 
                 self.myAddressBook = book
                 self.myAddressBook.sortByName()
@@ -44,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let person9 = AddressCard(firstName: "Petra", lastName: "Ingenhoven", street: "Kirchstrasse 50", postCode: 12345, city:"Augsburg", hobbies: ["Cook", "Drinking Beer"], friends: [person3, person7, person8])
         let person10 = AddressCard(firstName: "Monika", lastName: "Boehmer", street: "Hochstrasse 10", postCode: 12345, city:"Hannover", hobbies: ["Cook", "Drinking Beer"], friends: [person4, person6, person8])
         let person11 = AddressCard(firstName: "Brigitte", lastName: "Ludwig", street: "Südstrasse 30", postCode: 12345, city:"Hagen", hobbies: ["Cook", "Drinking Beer"], friends: [person1, person3, person6])
-        
         newAddressBook.add(card: person1)
         newAddressBook.add(card: person2)
         newAddressBook.add(card: person3)
@@ -56,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         newAddressBook.add(card: person9)
         newAddressBook.add(card: person10)
         newAddressBook.add(card: person11)
-        
         return newAddressBook
     }
     
@@ -65,8 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate.
         // Save data if appropriate.
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-        
-        let path = url.appendingPathComponent("book.plist")
+        let path = url.appendingPathComponent(filename)
         self.myAddressBook.save(toURL: path)
     }
     
@@ -74,8 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Get file with absolute path
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-        
-        let path = url.appendingPathComponent("book.plist")
+        let path = url.appendingPathComponent(filename)
         self.myAddressBook.save(toURL: path)
     }
     

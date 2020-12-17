@@ -10,14 +10,14 @@ import UIKit
 class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
     var myAddressBook: AddressBook? = nil
-    var card:AddressCard? = nil
+    //var newCard:AddressCard? = nil
     
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -25,11 +25,11 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
     // MARK: - View Will Disappear
     override func viewWillDisappear(_ animated: Bool) {
-        //formValiate()
-        if let newCard = self.card {
-            print("Adding new contact")
-            self.myAddressBook?.add(card: newCard)
+        if let newcard = createCard() {
+//            self.newCard = newcard
+            myAddressBook?.add(card: newcard)
         }
+        
     }
     
     // MARK: - Table view data source
@@ -137,16 +137,54 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         return true
     }
     */
+    
+    func createCard() -> AddressCard? {
+        let cellFirstname = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! GeneralDetailTVCell
+        let cellLastname = tableView.cellForRow(at: IndexPath(row: 1,section: 0)) as! GeneralDetailTVCell
+        let cellStreet = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! GeneralDetailTVCell
+        let cellPostcode = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! GeneralDetailTVCell
+        let cellCity = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! GeneralDetailTVCell
+        
+        var firstname:String = ""
+        var lastname:String = ""
+        var street:String = ""
+        var postCode:Int = 0
+        var city:String = ""
+        if let fname = cellFirstname.infoText.text {
+            firstname = fname
+        }
+        if let lname = cellLastname.infoText.text {
+            lastname = lname
+        }
 
-    /*
+        if let newstreet = cellStreet.infoText.text {
+            street = newstreet
+        }
+
+        if let plz = cellPostcode.infoText.text {
+            postCode = Int(plz) ?? 0
+        }
+        if let newcity = cellCity.infoText.text {
+            city = newcity
+        }
+
+        let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
+        return brandnewCard
+    }
+
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+//            if let controller = segue.destination as? ContactDetailTVC {
+//                controller.card = newCard
+//            }
+        
     }
-    */
+    
     
     // Make keyboard hide after user hit enter after changing textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
