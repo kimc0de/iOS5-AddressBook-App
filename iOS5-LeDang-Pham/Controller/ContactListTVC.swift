@@ -13,6 +13,8 @@ class ContactListTVC: UITableViewController {
     var myAddressBook = AddressBook()
     var sectionTitles = [String]()
     var sectionRows = [[AddressCard]]()
+    var selectedAddressCard = AddressCard()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,6 @@ class ContactListTVC: UITableViewController {
     }
     
     func updateAddressCard(){
-
         sectionTitles = myAddressBook.getAlphabetListFromLastName()
         sectionRows = myAddressBook.getAddressBookInStringArray()
     }
@@ -106,6 +107,11 @@ class ContactListTVC: UITableViewController {
     */
 
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAddressCard = sectionRows[indexPath.section][indexPath.row]
+    }
+  
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -113,15 +119,14 @@ class ContactListTVC: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        if segue.identifier == "newContact" {
             if let controller = segue.destination as? ContactNewTVC {
                 controller.myAddressBook = self.myAddressBook
             }
-        }
         
-        if segue.identifier == "contactDetails" {
-            //
-        }
+            if let controller = segue.destination as? ContactDetailTVC {
+                controller.card = selectedAddressCard
+            }
+        
     }
     
 

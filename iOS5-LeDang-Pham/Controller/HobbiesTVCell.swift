@@ -9,7 +9,8 @@ import UIKit
 
 class HobbiesTVCell: UITableViewCell {
 
-    @IBOutlet weak var hobbiesText: UITextField!
+    @IBOutlet weak var hobbyText: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

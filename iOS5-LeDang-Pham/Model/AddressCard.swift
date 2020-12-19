@@ -39,6 +39,14 @@ class AddressCard : Codable, Equatable {
         
     }
     
+    init(){
+        self.firstName = ""
+        self.lastName = ""
+        self.street = ""
+        self.postCode = 0
+        self.city = ""
+    }
+    
     func updateCard(firstName:String, lastName:String, street:String, postCode:Int, city:String ){
         self.firstName = firstName
         self.lastName = lastName
@@ -82,6 +90,7 @@ class AddressCard : Codable, Equatable {
         return "\(firstName) \(lastName)"
     }
     
+    
     func addFirstName(firstName : String) {
         self.firstName = firstName
     }
@@ -100,22 +109,5 @@ class AddressCard : Codable, Equatable {
     
     func addCity(city : String) {
         self.city = city
-    }
-    
-    func printInfo() {
-        print("+--------------------------------------")
-        print("| \(firstName) \(lastName)")
-        print("| \(street) ")
-        print("| \(postCode) \(city)")
-        print("| Hobbies:")
-        for String in hobbies {
-            print("|      \(String)")
-        }
-        print("| Friends:")
-        for AddressCard in friends {
-            print("|      \(AddressCard.firstName) \(AddressCard.lastName), \(AddressCard.postCode) \(AddressCard.city)")
-        }
-        print("+--------------------------------------")
-        
     }
 }

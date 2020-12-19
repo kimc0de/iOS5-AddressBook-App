@@ -15,10 +15,10 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -42,15 +42,15 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-//        switch section{
-//        case 0 : return 5
-//        case 1 : return hobbies?.count ?? 0
-//        case 2 : return friends?.count ?? 0
-//        default: return 1
-//        }
+        //        switch section{
+        //        case 0 : return 5
+        //        case 1 : return hobbies?.count ?? 0
+        //        case 2 : return friends?.count ?? 0
+        //        default: return 1
+        //        }
         return 5
     }
-
+    
     // MARK: - Cell per row
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,59 +82,59 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         return cell
         
         
-      //TODO: maybe add hobbies and friends here too..?
+        //TODO: maybe add hobbies and friends here too..?
         
     }
     
     // MARK: - Header for sections
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return ""
-//        } else if section == 1 {
-//            return "Hobbies"
-//        } else if section == 2 {
-//            return "Friends"
-//        } else {
-//            return ""
-//        }
+        //        if section == 0 {
+        //            return ""
+        //        } else if section == 1 {
+        //            return "Hobbies"
+        //        } else if section == 2 {
+        //            return "Friends"
+        //        } else {
+        //            return ""
+        //        }
         
         return ""
     }
     
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
     
     func createCard() -> AddressCard? {
         let cellFirstname = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! GeneralDetailTVCell
@@ -150,7 +150,7 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         var city:String = ""
         var newcard:AddressCard? = nil
         
-       /** For now the user must provide at least first name and last name to be able to save new contact */
+        /** For now the user must provide at least first name and last name to be able to save new contact */
         if let fname = cellFirstname.infoText.text {
             if fname != "" {
                 firstname = fname
@@ -174,43 +174,43 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
             }
         }
         /** For now these other fields can be empty, user can edit later on */
-        if let streetname = cellStreet.infoText.text{
+        if let streetname = cellStreet.infoText.text {
             if streetname != ""{
                 street = streetname
             }
         }
-        if let plz = cellPostcode.infoText.text{
-            if let postcode = Int(plz) ?? 0{
+        if let plz = cellPostcode.infoText.text {
+            if let postcode = Int(plz) {
                 postCode = postcode
             }
         }
         
-        if let cityname = cellCity.infoText.text{
+        if let cityname = cellCity.infoText.text {
             if cityname != ""{
                 city = cityname
             }
         }
         newcard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
         return newcard
-   
-}
         
-        //let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
-      //  return newCard
+    }
     
-
+    //let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
+    //  return newCard
+    
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-//            if let controller = segue.destination as? ContactDetailTVC {
-//                controller.card = newCard
-//            }
-        
-   // }
+    // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+    //            if let controller = segue.destination as? ContactDetailTVC {
+    //                controller.card = newCard
+    //            }
+    
+    // }
     
     
     // Make keyboard hide after user hit enter after changing textfield
