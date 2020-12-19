@@ -10,8 +10,7 @@ import UIKit
 class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     var card = AddressCard()
-    var hobbies = [String]()
-    var friends = [AddressCard]()
+
     
     // MARK: - View
     override func viewDidLoad() {
@@ -22,10 +21,6 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        hobbies = card.hobbies
-        friends = card.friends
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,9 +48,9 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         if section == 0 {
             return 5
         } else if section == 1 {
-            return hobbies.count
+            return card.hobbies.count
         } else if section == 2 {
-            return friends.count
+            return card.friends.count
         } else {
             return 0
         }
@@ -94,13 +89,13 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         else if indexPath.section == 1 { //hobbies section
             let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
             cell.hobbyText?.delegate = self
-            cell.hobbyText?.text = hobbies[indexPath.row]
+            cell.hobbyText?.text = card.hobbies[indexPath.row]
             return cell
         }
         
         else { //friends detail section
             let cell = tableView.dequeueReusableCell(withIdentifier: "friendsDetail", for: indexPath) as! FriendsTVCell
-            let friend = friends[indexPath.row]
+            let friend = card.friends[indexPath.row]
             cell.textLabel?.text = friend.getFullName()
             cell.detailTextLabel?.text = friend.getFullAddress()
             cell.detailTextLabel?.textColor = UIColor.gray
@@ -123,51 +118,48 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Editing functions
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.section == 1 && indexPath.row == (hobbies.count - 1) {
+        if indexPath.section == 1 && indexPath.row == (card.hobbies.count - 1) {
             return .insert //add one row at the end of section if insert a hobby
         } else {
             return .delete //delete the row if remove hobby
         }
     }
     
-    
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        if indexPath.section == 0 { //can only edit row general information
+        if indexPath.section == 0 {
+            return false
+        } else if indexPath.section == 1 {
             return true
-        }
-        else {
+        } else if indexPath.section == 2 {
+            return true
+        } else {
             return false
         }
     }
     
-    
-    
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.insertRows(at: [[1,card.hobbies.count]], with: .automatic)
+        
         if editingStyle == .delete {
             // Delete the row from the data source
             if indexPath.section == 1 {
-                self.card.hobbies.remove(at: indexPath.row)
-                hobbies.remove(at: indexPath.row)
+                card.hobbies.remove(at: indexPath.row)
             } else if indexPath.section == 2 {
-                self.card.friends.remove(at: indexPath.row)
-                friends.remove(at: indexPath.row)
+                card.friends.remove(at: indexPath.row)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             if indexPath.section == 1 {
-                print(indexPath.row)
                 let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
                 if let newHobby = cell.hobbyText.text {
                     
                     // add new hobby and insert new line
-                    hobbies.insert(newHobby, at: hobbies.count-1)
-                    for i in 0..<hobbies.count {
-                        print("\(i). \(hobbies[i])")
-                    }
+                    card.hobbies.append(newHobby)
+                    
                     tableView.beginUpdates()
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     tableView.insertRows(at: [indexPath], with: .automatic)
@@ -201,14 +193,20 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         let cellCity = tableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! GeneralDetailTVCell
         let city = cellCity.infoText.text ?? card.city
         
-        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city)
         
         // update hobbies
-        /*
-         let cellHobby = tableView.cellForRow(at: IndexPath(row: hobbies.count, section: 1)) as! HobbiesTVCell
-         let hobby = cellHobby.hobbiesText.text ?? hobbies[hobbies.count-1]
-         self.hobbies.append(hobby)
-         */
+        for hobb in card.hobbies {
+            let hobbyIndex = card.hobbies.firstIndex(of: hobb)!
+            let cellHobby = tableView.cellForRow(at: IndexPath(row: hobbyIndex, section: 1)) as! HobbiesTVCell
+            let hobby = cellHobby.hobbyText.text ?? card.hobbies[card.hobbies.count-1]
+            card.hobbies[hobbyIndex] = hobby
+        }
+        
+        // update friends
+        
+        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies)
+
+         
         
         
         
@@ -238,7 +236,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let controller = segue.destination as? ContactFriendsTVC {
-            controller.friends = friends
+            controller.friends = card.friends
             controller.card = card
         }
     }

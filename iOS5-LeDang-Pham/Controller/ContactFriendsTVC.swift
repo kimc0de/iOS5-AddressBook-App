@@ -9,9 +9,9 @@ import UIKit
 
 class ContactFriendsTVC: UITableViewController {
 
-    var myAddressBook :AddressBook? = nil
-    var card:AddressCard? = nil
-    var friends:[AddressCard]? = nil
+    var myAddressBook = AddressBook()
+    var card:AddressCard = AddressCard()
+    var friends = [AddressCard]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

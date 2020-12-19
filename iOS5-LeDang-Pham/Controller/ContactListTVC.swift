@@ -85,6 +85,7 @@ class ContactListTVC: UITableViewController {
             // Delete the row from the data source
             sectionRows[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            myAddressBook.remove(card: sectionRows[indexPath.section][indexPath.row])
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

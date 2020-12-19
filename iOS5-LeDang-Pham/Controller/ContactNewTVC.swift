@@ -9,8 +9,8 @@ import UIKit
 
 class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
-    var myAddressBook: AddressBook? = nil
-    var newCard:AddressCard? = nil
+    var myAddressBook = AddressBook()
+    var newCard = AddressCard()
     
     // MARK: - View Did Load
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - View Will Disappear
     override func viewWillDisappear(_ animated: Bool) {
         if let newcard = createCard() {
-            myAddressBook?.add(card: newcard)
+            myAddressBook.add(card: newcard)
         }
     }
     
