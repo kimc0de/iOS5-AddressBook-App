@@ -10,14 +10,14 @@ import UIKit
 class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     
     var myAddressBook: AddressBook? = nil
-    //var newCard:AddressCard? = nil
+    var newCard:AddressCard? = nil
     
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = true
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -26,10 +26,8 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - View Will Disappear
     override func viewWillDisappear(_ animated: Bool) {
         if let newcard = createCard() {
-//            self.newCard = newcard
             myAddressBook?.add(card: newcard)
         }
-        
     }
     
     // MARK: - Table view data source
@@ -41,7 +39,7 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         //TODO: maybe add sections for hobbies, friends?
     }
     
-    // MARK: - Number of rows per section
+    // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 //        switch section{
@@ -150,40 +148,69 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         var street:String = ""
         var postCode:Int = 0
         var city:String = ""
+        var newcard:AddressCard? = nil
+        
+       /** For now the user must provide at least first name and last name to be able to save new contact */
         if let fname = cellFirstname.infoText.text {
-            firstname = fname
+            if fname != "" {
+                firstname = fname
+                if let lname = cellLastname.infoText.text {
+                    if lname != ""{
+                        lastname = lname
+                    }else{
+                        let alert = UIAlertController(title: "Cannot add new contact", message: "Error: Last name is empty!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction) -> Void in print("Error adding yourself") }))
+                        self.present(alert, animated: true, completion: nil)
+                        print("Last name is empty!")
+                        return nil
+                    }
+                }
+            }else{
+                let alert = UIAlertController(title: "Cannot add new contact", message: "Error: First name is empty!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction) -> Void in print("Error adding yourself") }))
+                self.present(alert, animated: true, completion: nil)
+                print("First name is empty!")
+                return nil
+            }
         }
-        if let lname = cellLastname.infoText.text {
-            lastname = lname
+        /** For now these other fields can be empty, user can edit later on */
+        if let streetname = cellStreet.infoText.text{
+            if streetname != ""{
+                street = streetname
+            }
         }
-
-        if let newstreet = cellStreet.infoText.text {
-            street = newstreet
+        if let plz = cellPostcode.infoText.text{
+            if let postcode = Int(plz) ?? 0{
+                postCode = postcode
+            }
         }
-
-        if let plz = cellPostcode.infoText.text {
-            postCode = Int(plz) ?? 0
+        
+        if let cityname = cellCity.infoText.text{
+            if cityname != ""{
+                city = cityname
+            }
         }
-        if let newcity = cellCity.infoText.text {
-            city = newcity
-        }
-
-        let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
-        return brandnewCard
-    }
+        newcard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
+        return newcard
+   
+}
+        
+        //let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
+      //  return newCard
+    
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
 //            if let controller = segue.destination as? ContactDetailTVC {
 //                controller.card = newCard
 //            }
         
-    }
+   // }
     
     
     // Make keyboard hide after user hit enter after changing textfield

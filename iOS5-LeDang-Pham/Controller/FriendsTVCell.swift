@@ -10,6 +10,11 @@ import UIKit
 class FriendsTVCell: UITableViewCell {
 
     @IBOutlet weak var friendsText: UITextField!
+    
+    @IBOutlet weak var friendName: UILabel!
+    
+    @IBOutlet weak var friendAddress: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

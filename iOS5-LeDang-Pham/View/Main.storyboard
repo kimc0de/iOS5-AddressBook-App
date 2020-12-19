@@ -132,23 +132,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4H-ms-oxJ">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="98" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name, last name ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-Ps-7LO">
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-Ps-7LO">
                                             <rect key="frame" x="126" y="4" width="268" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="updateInfo:" destination="prZ-cY-m5h" eventType="editingDidEnd" id="SGA-YL-7AE"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="infoLabel" destination="R4H-ms-oxJ" id="t7Z-GJ-K94"/>
-                                    <outlet property="infoText" destination="dqf-Ps-7LO" id="stc-xq-33C"/>
+                                    <outlet property="infoLabel" destination="R4H-ms-oxJ" id="0ZU-bZ-k6r"/>
+                                    <outlet property="infoText" destination="dqf-Ps-7LO" id="7ZT-Rm-XwF"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hobbiesDetail" id="4r8-XM-MSS" customClass="HobbiesTVCell" customModule="iOS5_LeDang_Pham" customModuleProvider="target">
@@ -164,7 +167,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
-                                                <action selector="hobbies:" destination="DwP-Bs-4av" eventType="editingDidEnd" id="InT-ks-x60"/>
+                                                <action selector="updateInfo:" destination="prZ-cY-m5h" eventType="editingDidEnd" id="M6e-58-mpV"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -197,6 +200,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="friendAddress" destination="Prm-yc-RDK" id="nDp-zb-AVA"/>
+                                    <outlet property="friendName" destination="nXj-ZL-jlz" id="Lgl-LN-Lhg"/>
                                     <segue destination="vwx-6c-ktQ" kind="show" identifier="Friends" id="dKr-af-lBp"/>
                                 </connections>
                             </tableViewCell>
@@ -215,6 +220,9 @@
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vwx-6c-ktQ" kind="show" id="Cdy-CI-hCO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -227,7 +235,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Esa-0r-WV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="DwP-Bs-4av" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2389.8550724637685" y="-443.30357142857139"/>
         </scene>
@@ -293,6 +300,9 @@
             <point key="canvasLocation" x="428" y="-91"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dKr-af-lBp"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

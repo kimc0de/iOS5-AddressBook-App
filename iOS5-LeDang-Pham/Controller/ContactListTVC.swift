@@ -10,7 +10,7 @@ import UIKit
 class ContactListTVC: UITableViewController {
     
     
-    var addressBook = AddressBook()
+    var myAddressBook = AddressBook()
     var sectionTitles = [String]()
     var sectionRows = [[AddressCard]]()
     
@@ -25,37 +25,37 @@ class ContactListTVC: UITableViewController {
         // Passing variable from AppDelegate
         if let del = UIApplication.shared.delegate as? AppDelegate {
             // access properties
-            addressBook = del.myAddressBook
+            myAddressBook = del.myAddressBook
         }
-        updateAddressCard()
+       updateAddressCard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //sortieren
+        
         super.viewWillAppear(animated)
         updateAddressCard()
         tableView.reloadData()
     }
     
     func updateAddressCard(){
-        
-        sectionTitles = addressBook.getAlphabetListFromLastName()
-        sectionRows = addressBook.getAddressBookInStringArray()
+
+        sectionTitles = myAddressBook.getAlphabetListFromLastName()
+        sectionRows = myAddressBook.getAddressBookInStringArray()
     }
 
     // MARK: - Table view data source
-
+    // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return sectionRows[section].count
     }
 
-    
+    // MARK: - Cells per row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Name", for: indexPath)
 
@@ -115,7 +115,7 @@ class ContactListTVC: UITableViewController {
         
         if segue.identifier == "newContact" {
             if let controller = segue.destination as? ContactNewTVC {
-                controller.myAddressBook = self.addressBook
+                controller.myAddressBook = self.myAddressBook
             }
         }
         
