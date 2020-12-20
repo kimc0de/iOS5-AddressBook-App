@@ -178,11 +178,10 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
 
                 if let newHobby = cell.hobbyText.text {
-                     print("inserting...")
                      var hobbies = card.hobbies
                         
                         hobbies.insert(newHobby, at: card.hobbies.count-1)
-                        
+                    
                         tableView.beginUpdates()
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                         tableView.insertRows(at: [indexPath], with: .automatic)
@@ -197,14 +196,17 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
+        // Takes care of toggling the button's title.
         super.setEditing(editing, animated: animated)
+        // Toggle table view editing.
         tableView.setEditing(editing, animated: animated)
 
         let newHobby = ""
         if (editing) {
             card.hobbies.append(newHobby)
             tableView.insertRows(at: [IndexPath(row: card.hobbies.count-1, section: 1)], with: .fade)
-        } else {
+        }
+        else { //delete the empty "New hobby" row
             if card.hobbies.last == newHobby {
                 card.hobbies.removeLast()
                 tableView.deleteRows(at: [IndexPath(row: card.hobbies.count, section: 1)], with: .fade)
