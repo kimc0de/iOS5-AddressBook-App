@@ -26,30 +26,17 @@ class ContactFriendsTVC: UITableViewController {
             myAddressBook = del.myAddressBook
         }
         updateAddressCard()
-        selectFriends()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateAddressCard()
-        selectFriends()
         tableView.reloadData()
     }
     
     func updateAddressCard(){
         sectionTitles = myAddressBook.getAlphabetListFromLastName()
         sectionRows = myAddressBook.getAddressBookInStringArray()
-    }
-    
-    func selectFriends(){
-        print(getIndexPathFrom2DArray(cardArr: card.friends, card2DArr: sectionRows))
-        
-        for ip in getIndexPathFrom2DArray(cardArr: card.friends, card2DArr: sectionRows){
-            print(ip)
-            if let cell = tableView.cellForRow(at: ip) {
-                cell.accessoryType = .checkmark
-            }
-        }
     }
     
     func getIndexPathFrom2DArray(cardArr : [AddressCard], card2DArr: [[AddressCard]]) -> [IndexPath]{
@@ -84,7 +71,9 @@ class ContactFriendsTVC: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullName()
         cell.detailTextLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullAddress()
-        
+        if card.friends.contains(sectionRows[indexPath.section][indexPath.row]) {
+            cell.accessoryType = .checkmark
+        }
         
         return cell
     }

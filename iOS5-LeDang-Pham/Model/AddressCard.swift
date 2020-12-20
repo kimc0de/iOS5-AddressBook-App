@@ -47,13 +47,14 @@ class AddressCard : Codable, Equatable {
         self.city = ""
     }
     
-    func updateCard(firstName:String, lastName:String, street:String, postCode:Int, city:String, hobbies: [String]){
+    func updateCard(firstName:String, lastName:String, street:String, postCode:Int, city:String, hobbies: [String], friends : [AddressCard]){
         self.firstName = firstName
         self.lastName = lastName
         self.street = street
         self.postCode = postCode
         self.city = city
         self.hobbies = hobbies
+        self.friends = friends
     }
     
     func add(hobby: String) {

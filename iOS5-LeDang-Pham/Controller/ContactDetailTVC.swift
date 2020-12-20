@@ -241,7 +241,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             card.hobbies[hobbyIndex] = hobby
         }
         
-        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies) 
+        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies, friends: card.friends)
     }
     
     
