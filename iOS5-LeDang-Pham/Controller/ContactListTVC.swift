@@ -63,6 +63,7 @@ class ContactListTVC: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullName()
         cell.detailTextLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullAddress()
+        cell.detailTextLabel?.textColor = UIColor.gray
         return cell
     }
     
