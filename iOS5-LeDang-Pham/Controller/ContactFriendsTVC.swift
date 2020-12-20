@@ -89,11 +89,22 @@ class ContactFriendsTVC: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
-                if !card.friends.contains(sectionRows[indexPath.section][indexPath.row]) && sectionRows[indexPath.section][indexPath.row] != card{
-                    card.friends.append(sectionRows[indexPath.section][indexPath.row])
-            }
+                let selectedCard:AddressCard = sectionRows[indexPath.section][indexPath.row]
+                if !card.friends.contains(selectedCard) && selectedCard != card{
+                    self.card.friends.append(selectedCard)
+                }
+                else {
+                    if cell.accessoryType == .checkmark {
+                        self.card.remove(friend: selectedCard)
+                        cell.accessoryType = UITableViewCell.AccessoryType.none
+                    } else {
+                        self.card.add(friend: selectedCard)
+                        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+                    }
+                }
         }
     }
 
