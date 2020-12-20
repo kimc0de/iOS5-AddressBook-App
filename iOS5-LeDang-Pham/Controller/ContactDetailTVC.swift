@@ -10,8 +10,8 @@ import UIKit
 class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     var card = AddressCard()
-    var hobbies:[String]? = nil
-    var friends:[AddressCard]? = nil
+//    var hobbies:[String]? = nil
+//    var friends:[AddressCard]? = nil
     
     // MARK: - View
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - Table view data source
     // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +57,9 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             return card.hobbies.count + 1
         } else if section == 2 {
             return card.friends.count
-        } else {
+        }else if section == 3 {
+            return 1
+        }else {
             return 0
         }
     }
@@ -98,18 +100,23 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             //cell.hobbyText?.delegate = self
             if indexPath.row < card.hobbies.count {
                 cell.hobbyText.text = card.hobbies[indexPath.row]
-            } else {
+            }
+            else {
                 cell.hobbyText.text = "Add new Hobby"
             }
             return cell
         }
         
-        else { //friends detail section
+        else if indexPath.section == 2 { //friends detail section
             let cell = tableView.dequeueReusableCell(withIdentifier: "friendsDetail", for: indexPath) as! FriendsTVCell
             let friend = card.friends[indexPath.row]
             cell.textLabel?.text = friend.getFullName()
             cell.detailTextLabel?.text = friend.getFullAddress()
             cell.detailTextLabel?.textColor = UIColor.gray
+            return cell
+        }
+        else { //add friend section
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addFriend", for: indexPath)
             return cell
         }
     }
@@ -212,7 +219,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             card.hobbies[hobbyIndex] = hobby
         }
         
-        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies)
+        card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies) 
     }
     
     
