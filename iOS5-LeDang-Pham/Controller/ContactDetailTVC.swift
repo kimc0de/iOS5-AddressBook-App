@@ -10,24 +10,17 @@ import UIKit
 class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     var card = AddressCard()
-//    var hobbies:[String]? = nil
-//    var friends:[AddressCard]? = nil
     
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = true
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-//        if let card = self.card {
-//            hobbies = card.hobbies
-//            friends = card.friends
-//            
-//        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,9 +30,6 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        if let card = self.card {
-//            self.friends = card.friends
-//        }
         updateInfo((Any).self)
     }
     
@@ -97,15 +87,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         
         else if indexPath.section == 1 { //hobbies section
             let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
-            //cell.hobbyText?.delegate = self
-//            if indexPath.row < card.hobbies.count {
-//                cell.hobbyText.text = card.hobbies[indexPath.row]
-//            }
-//            else {
-//                cell.hobbyText.text = "Add new Hobby"
-//            }
-//            return cell
-            
+    
             cell.hobbyText.borderStyle = UITextField.BorderStyle.none
             cell.hobbyText.text = card.hobbies[indexPath.row]
             cell.hobbyText.delegate = self
@@ -140,8 +122,6 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     }
     
     // MARK: - Editing functions
-    
-    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if indexPath.section == 1 && indexPath.row == (card.hobbies.count - 1) {
             return .insert //add one row at the end of section if insert a hobby

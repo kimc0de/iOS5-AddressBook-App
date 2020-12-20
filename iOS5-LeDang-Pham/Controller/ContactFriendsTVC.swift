@@ -58,6 +58,8 @@ class ContactFriendsTVC: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullName()
         cell.detailTextLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullAddress()
+        cell.accessoryType = UITableViewCell.AccessoryType.none
+        
         if card.friends.contains(sectionRows[indexPath.section][indexPath.row]) {
             cell.accessoryType = .checkmark
         }
@@ -67,19 +69,14 @@ class ContactFriendsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
             let selectedCard:AddressCard = sectionRows[indexPath.section][indexPath.row]
             if !card.friends.contains(selectedCard) && selectedCard != card{
-                self.card.friends.append(selectedCard)
+                cell.accessoryType = .checkmark
+                self.card.add(friend: selectedCard)
             }
             else {
-                if cell.accessoryType == .checkmark {
-                    self.card.remove(friend: selectedCard)
-                    cell.accessoryType = UITableViewCell.AccessoryType.none
-                } else {
-                    self.card.add(friend: selectedCard)
-                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-                }
+                self.card.remove(friend: selectedCard)
+                cell.accessoryType = .none
             }
         }
     }
@@ -136,14 +133,18 @@ class ContactFriendsTVC: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let controller = segue.destination as? ContactDetailTVC {
+            controller.card = self.card
+            
+        }
+    }
+     
     
 }
