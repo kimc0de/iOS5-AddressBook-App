@@ -10,30 +10,63 @@ import UIKit
 class ContactFriendsTVC: UITableViewController {
 
     var myAddressBook = AddressBook()
+    var sectionTitles = [String]()
+    var sectionRows = [[AddressCard]]()
     var card:AddressCard = AddressCard()
-    var friends = [AddressCard]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.        
+        // Passing variable from AppDelegate
+        if let del = UIApplication.shared.delegate as? AppDelegate {
+            // access properties
+            myAddressBook = del.myAddressBook
+        }
+       updateAddressCard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        updateAddressCard()
+        tableView.reloadData()
+    }
+    
+    func updateAddressCard(){
+        sectionTitles = myAddressBook.getAlphabetListFromLastName()
+        sectionRows = myAddressBook.getAddressBookInStringArray()
     }
 
     // MARK: - Table view data source
-
+    // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sectionTitles.count
     }
-
+    // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return sectionRows[section].count
     }
+
+    // MARK: - Cells per row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendsList", for: indexPath)
+
+        // Configure the cell...
+        cell.textLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullName()
+        cell.detailTextLabel?.text = sectionRows[indexPath.section][indexPath.row].getFullAddress()
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

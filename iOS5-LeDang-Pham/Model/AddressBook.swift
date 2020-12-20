@@ -74,13 +74,16 @@ class AddressBook : Codable {
     func getAlphabetListFromLastName() -> [String]{
         var addressBookWithFirstCharFromLastName = [String]()
         for card in addressCards {
-            addressBookWithFirstCharFromLastName.append(getUpperCasedFirstChar(str: card.lastName))
+            let firstChar = getUpperCasedFirstChar(str: card.lastName)
+            if !addressBookWithFirstCharFromLastName.contains(firstChar){
+            addressBookWithFirstCharFromLastName.append(firstChar)
+            }
         }
         return addressBookWithFirstCharFromLastName
     }
     
     func getUpperCasedFirstChar(str: String) -> String {
-        return String(str.prefix(0)).uppercased()
+        return String(str.prefix(1)).uppercased()
     }
     
     //return list of address card containing last name start with the given char

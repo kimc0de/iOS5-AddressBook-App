@@ -48,7 +48,7 @@ class ContactListTVC: UITableViewController {
     // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sectionTitles.count
     }
     // MARK: - Rows per section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,8 +127,5 @@ class ContactListTVC: UITableViewController {
             if let controller = segue.destination as? ContactDetailTVC {
                 controller.card = selectedAddressCard
             }
-        
     }
-    
-
 }

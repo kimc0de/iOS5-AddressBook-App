@@ -90,6 +90,9 @@ class AddressCard : Codable, Equatable {
         return "\(firstName) \(lastName)"
     }
     
+    func getFriendList() -> [AddressCard] {
+        return friends
+    }
     
     func addFirstName(firstName : String) {
         self.firstName = firstName
