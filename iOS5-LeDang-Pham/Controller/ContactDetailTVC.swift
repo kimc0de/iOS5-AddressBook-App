@@ -54,7 +54,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         if section == 0 {
             return 5
         } else if section == 1 {
-            return card.hobbies.count + 1
+            return card.hobbies.count
         } else if section == 2 {
             return card.friends.count
         }else if section == 3 {
@@ -98,12 +98,17 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         else if indexPath.section == 1 { //hobbies section
             let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
             //cell.hobbyText?.delegate = self
-            if indexPath.row < card.hobbies.count {
-                cell.hobbyText.text = card.hobbies[indexPath.row]
-            }
-            else {
-                cell.hobbyText.text = "Add new Hobby"
-            }
+//            if indexPath.row < card.hobbies.count {
+//                cell.hobbyText.text = card.hobbies[indexPath.row]
+//            }
+//            else {
+//                cell.hobbyText.text = "Add new Hobby"
+//            }
+//            return cell
+            
+            cell.hobbyText.borderStyle = UITextField.BorderStyle.none
+            cell.hobbyText.text = card.hobbies[indexPath.row]
+            cell.hobbyText.delegate = self
             return cell
         }
         
@@ -138,7 +143,7 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.section == 1 && indexPath.row == card.hobbies.count {
+        if indexPath.section == 1 && indexPath.row == (card.hobbies.count - 1) {
             return .insert //add one row at the end of section if insert a hobby
         } else {
             return .delete //delete the row if remove hobby
@@ -147,13 +152,11 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            return false
-        } else if indexPath.section == 1 {
+        if indexPath.section == 1 {
             return true
         } else if indexPath.section == 2 {
             return true
-        } else {
+        } else { //section 0, section 3
             return false
         }
     }
@@ -173,24 +176,41 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "hobbiesDetail", for: indexPath) as! HobbiesTVCell
+
                 if let newHobby = cell.hobbyText.text {
-                    
-                    // add new hobby and insert new line
-                    card.hobbies.append(newHobby)
-                    
-                    tableView.beginUpdates()
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
-                    tableView.insertRows(at: [indexPath], with: .automatic)
-                    tableView.endUpdates()
-                    
-                    setEditing(false, animated: false)
-                    setEditing(true, animated: false)
+                     print("inserting...")
+                     var hobbies = card.hobbies
+                        
+                        hobbies.insert(newHobby, at: card.hobbies.count-1)
+                        
+                        tableView.beginUpdates()
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        tableView.insertRows(at: [indexPath], with: .automatic)
+                        tableView.endUpdates()
+
+                        setEditing(false, animated: false)
+                        setEditing(true, animated: false)
                     
                 }
             }
         }    
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+
+        let newHobby = ""
+        if (editing) {
+            card.hobbies.append(newHobby)
+            tableView.insertRows(at: [IndexPath(row: card.hobbies.count-1, section: 1)], with: .fade)
+        } else {
+            if card.hobbies.last == newHobby {
+                card.hobbies.removeLast()
+                tableView.deleteRows(at: [IndexPath(row: card.hobbies.count, section: 1)], with: .fade)
+            }
+        }
+    }
     
     // Update general details and hobbies after user edits their information
     @IBAction func updateInfo(_ sender: Any) {
