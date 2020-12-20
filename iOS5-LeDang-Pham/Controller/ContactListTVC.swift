@@ -119,13 +119,17 @@ class ContactListTVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
+        if segue.identifier == "newContact" {
             if let controller = segue.destination as? ContactNewTVC {
                 controller.myAddressBook = self.myAddressBook
             }
-        
+        }
+        if segue.identifier == "contactDetails" {
             if let controller = segue.destination as? ContactDetailTVC {
-                controller.card = selectedAddressCard
+                if let indexPath = tableView.indexPathsForSelectedRows?.first {
+                    controller.card = sectionRows[indexPath.section][indexPath.row]
+                }
             }
+        }
     }
 }

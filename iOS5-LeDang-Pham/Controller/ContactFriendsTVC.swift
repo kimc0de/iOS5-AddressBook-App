@@ -13,6 +13,7 @@ class ContactFriendsTVC: UITableViewController {
     var sectionTitles = [String]()
     var sectionRows = [[AddressCard]]()
     var card:AddressCard = AddressCard()
+    var friends = [AddressCard]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

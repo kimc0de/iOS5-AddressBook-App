@@ -10,7 +10,8 @@ import UIKit
 class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     var card = AddressCard()
-    
+    var hobbies:[String]? = nil
+    var friends:[AddressCard]? = nil
     
     // MARK: - View
     override func viewDidLoad() {
@@ -21,6 +22,12 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        if let card = self.card {
+//            hobbies = card.hobbies
+//            friends = card.friends
+//            
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +37,9 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        if let card = self.card {
+//            self.friends = card.friends
+//        }
         updateInfo((Any).self)
     }
     
@@ -202,8 +212,6 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
             card.hobbies[hobbyIndex] = hobby
         }
         
-        // update friends
-        
         card.updateCard(firstName: firstname, lastName: lastname, street: street, postCode: postcode, city: city, hobbies: card.hobbies)
     }
     
@@ -232,6 +240,8 @@ class ContactDetailTVC: UITableViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         if let controller = segue.destination as? ContactFriendsTVC {
             controller.card = card
+            //controller.friends = friends  
+            
         }
     }
     
