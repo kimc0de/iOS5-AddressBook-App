@@ -35,7 +35,7 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
     // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
         //TODO: maybe add sections for hobbies, friends?
     }
     
@@ -48,39 +48,44 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         //        case 2 : return friends?.count ?? 0
         //        default: return 1
         //        }
-        return 5
+        if section == 0 {return 5}
+        else {return 1}
     }
     
     // MARK: - Cell per row
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if indexPath.section == 0{
         // Only general details
         let cell = tableView.dequeueReusableCell(withIdentifier: "newDetail", for: indexPath) as! GeneralDetailTVCell
         
         cell.infoText.delegate = self
         
-        // Configure the cell...
-        switch indexPath.row {
-        case 0:
-            cell.infoLabel.text = "Firstname"
-            cell.infoText.text = ""
-        case 1:
-            cell.infoLabel.text = "Lastname"
-            cell.infoText.text = ""
-        case 2:
-            cell.infoLabel.text = "Street"
-            cell.infoText.text = ""
-        case 3:
-            cell.infoLabel.text = "Post Code"
-            cell.infoText.text = ""
-        case 4:
-            cell.infoLabel.text = "City"
-            cell.infoText.text = ""
-        default: break
+            // Configure the cell...
+            switch indexPath.row {
+            case 0:
+                cell.infoLabel.text = "Firstname"
+                cell.infoText.text = ""
+            case 1:
+                cell.infoLabel.text = "Lastname"
+                cell.infoText.text = ""
+            case 2:
+                cell.infoLabel.text = "Street"
+                cell.infoText.text = ""
+            case 3:
+                cell.infoLabel.text = "Post Code"
+                cell.infoText.text = ""
+            case 4:
+                cell.infoLabel.text = "City"
+                cell.infoText.text = ""
+            default: break
+            }
+            return cell
         }
-        return cell
-        
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "warning", for: indexPath)
+            return cell
+        }
         
         //TODO: maybe add hobbies and friends here too..?
         
@@ -195,11 +200,7 @@ class ContactNewTVC: UITableViewController, UITextFieldDelegate {
         
     }
     
-    //let brandnewCard = AddressCard(firstName: firstname, lastName: lastname, street: street, postCode: postCode, city: city)
-    //  return newCard
-    
-    
-    
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let person18 = AddressCard(firstName: "Gerald", lastName: "Kleinen", street: "Eichenweg 17", postCode: 12345, city:"Kassel", hobbies: ["Drawing", "Drinking Beer"], friends: [person10, person12, person13])
         let person19 = AddressCard(firstName: "Horst", lastName: "Lehmann", street: "Poststrasse 103", postCode: 12345, city:"Bremen", hobbies: ["Skiing", "Singing"], friends: [person7, person2, person12])
         let person20 = AddressCard(firstName: "Manfred", lastName: "Meier", street: "Ulmenweg 50", postCode: 12345, city:"Augsburg", hobbies: ["Cooking", "DJ", "Drawing"], friends: [person3, person7, person8])
-        let person21 = AddressCard(firstName: "Monika", lastName: "Nolte", street: "Hochstrasse 10", postCode: 12345, city:"Hannover", hobbies: ["Cooking", "Break dance"], friends: [person4, person6, person8])
+        let person21 = AddressCard(firstName: "Monic", lastName: "Nolte", street: "Hochstrasse 10", postCode: 12345, city:"Hannover", hobbies: ["Cooking", "Break dance"], friends: [person4, person6, person8])
         let person22 = AddressCard(firstName: "Brian", lastName: "Probst", street: "Feldstrasse 30", postCode: 12345, city:"Hagen", hobbies: ["Cooking", "Dancing"], friends: [person11, person15, person6])
         let person23 = AddressCard(firstName: "Lila", lastName: "Quandt", street: "Südstrasse 344", postCode: 12345, city:"Berlin", hobbies: ["Cook", "Drinking Beer", "Guitar"], friends: [person21, person13, person16])
         let person24 = AddressCard(firstName: "Meya", lastName: "Römer", street: "Quellenstrasse111", postCode: 12345, city:"Chemnitz", hobbies: ["Reading", "Photography", "Dancing"], friends: [person3, person5, person10, person11])
