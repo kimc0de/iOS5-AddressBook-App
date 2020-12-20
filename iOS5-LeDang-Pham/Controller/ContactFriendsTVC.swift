@@ -39,19 +39,6 @@ class ContactFriendsTVC: UITableViewController {
         sectionRows = myAddressBook.getAddressBookInStringArray()
     }
     
-    func getIndexPathFrom2DArray(cardArr : [AddressCard], card2DArr: [[AddressCard]]) -> [IndexPath]{
-        var indexPaths = [IndexPath]()
-        
-        for card in cardArr {
-            for cards in card2DArr {
-                if cards.contains(card){
-                    indexPaths.append(IndexPath.init(row: cards.firstIndex(of: card)!, section: card2DArr.firstIndex(of: cards)!))
-                }
-            }
-        }
-        
-        return indexPaths
-    }
     // MARK: - Table view data source
     // MARK: - Number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,30 +67,30 @@ class ContactFriendsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
-                cell.accessoryType = .checkmark
-                let selectedCard:AddressCard = sectionRows[indexPath.section][indexPath.row]
-                if !card.friends.contains(selectedCard) && selectedCard != card{
-                    self.card.friends.append(selectedCard)
+            cell.accessoryType = .checkmark
+            let selectedCard:AddressCard = sectionRows[indexPath.section][indexPath.row]
+            if !card.friends.contains(selectedCard) && selectedCard != card{
+                self.card.friends.append(selectedCard)
+            }
+            else {
+                if cell.accessoryType == .checkmark {
+                    self.card.remove(friend: selectedCard)
+                    cell.accessoryType = UITableViewCell.AccessoryType.none
+                } else {
+                    self.card.add(friend: selectedCard)
+                    cell.accessoryType = UITableViewCell.AccessoryType.checkmark
                 }
-                else {
-                    if cell.accessoryType == .checkmark {
-                        self.card.remove(friend: selectedCard)
-                        cell.accessoryType = UITableViewCell.AccessoryType.none
-                    } else {
-                        self.card.add(friend: selectedCard)
-                        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-                    }
-                }
+            }
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
     
-
-   
-
+    
+    
+    
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
